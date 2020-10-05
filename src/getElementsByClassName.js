@@ -15,11 +15,9 @@ var getElementsByClassName = function(className, nodes
 
   //initialize array
   var matches = [];
-  console.log('nodes: ',nodes);
   // get the classList of the nodes.
   for (var i = 0; i < nodes.length; i++) {
     var classes = nodes[i].classList;
-    console.log('classes: ', classes);
 
     //iterate through the classLists. If contains className, push node onto an array.
     if (classes) {
@@ -28,16 +26,14 @@ var getElementsByClassName = function(className, nodes
           matches.push(nodes[i].tagName.toLowerCase());
         }
       }
-      console.log('matches: ', matches); // matches: [body.targetClassName]
-      //all i want is ["body"];
     }
     //if there are children of this element, call getElementsByClassName(className, children). store that into a variable.
+    console.log('childNodes: ', nodes[i].childNodes);
     if (nodes[i].childNodes) {
       matches = matches.concat(getElementsByClassName(className, nodes[i].childNodes));
     }
   }
   //return the recursive variable.concat(array);
-  console.log('result: ', matches);
 
   return matches;
 
